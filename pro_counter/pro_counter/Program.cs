@@ -16,10 +16,20 @@ namespace pro_counter
             int a = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < a; i++)
             {
-                Console.WriteLine("Enter Type :");
-                string type = Console.ReadLine();
-                Item p = new Item(type.ToUpperInvariant());
-                items.Add(p);
+            start: Console.WriteLine("Enter Type :");
+                   string type = Console.ReadLine();
+                if (type.ToUpperInvariant() == "A" ||
+                    type.ToUpperInvariant() == "B" ||
+                    type.ToUpperInvariant() == "C" ||
+                    type.ToUpperInvariant() == "D")
+                {
+                    Item p = new Item(type.ToUpperInvariant());
+                    items.Add(p);
+                }else
+                {
+                    Console.WriteLine("\nEntered wrong type .. !!");
+                    goto start;
+                }
             }
 
             int totalPrice = Item.GetTotalPrice(items);
